@@ -97,16 +97,16 @@ class AddressBook(UserDict):
     def add_record(self, name):
         """Метод додає запис(рекорд) в адресну книжку *class AddressBook"""
 
-        self.name = name
+        
         self.data[f"{name.name}"] = name
 
     def delete(self, name):
         """Метод видаляє запис(рекорд) в адресну книжку *class AddressBook"""
 
-        self.name = name
+        
 
         for key_name in self.data.keys():
-            if name == self.name:
+            if key_name == name:
                 self.data.pop(key_name)
                 return self.data
         return None
@@ -114,9 +114,9 @@ class AddressBook(UserDict):
     def find(self, name):
         """Метод шукає запис(рекорд) за іменем в адресній книжці *class AddressBook"""
 
-        self.name = name
+        # self.name = name
 
         for key_name in self.data.keys():
-            if key_name == self.name:
-                return self.data[self.name]
+            if key_name == name:
+                return self.data[name]
         return None
