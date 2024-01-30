@@ -104,7 +104,6 @@ class AddressBook(UserDict):
         """Метод видаляє запис(рекорд) в адресну книжку *class AddressBook"""
 
         
-
         for key_name in self.data.keys():
             if key_name == name:
                 self.data.pop(key_name)
@@ -114,7 +113,6 @@ class AddressBook(UserDict):
     def find(self, name):
         """Метод шукає запис(рекорд) за іменем в адресній книжці *class AddressBook"""
 
-        # self.name = name
 
         for key_name in self.data.keys():
             if key_name == name:
