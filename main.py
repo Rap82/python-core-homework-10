@@ -55,7 +55,7 @@ class Record:
 
     def remove_phone(self, del_phone: Phone):
         """Метод видаляє збережений телефон з поля рекорд class Record"""
-        
+
         del_phone = Phone(del_phone)
         self.phones.remove(del_phone)
 
@@ -94,16 +94,14 @@ class AddressBook(UserDict):
     """Субклас для батьтківського *UserDict,  де реалізовано логіку роботи з адресоною книжкою,
     Додавати записи, видаляти записи, шукати записи за іменем."""
 
-    def add_record(self, name):
+    def add_record(self, record):
         """Метод додає запис(рекорд) в адресну книжку *class AddressBook"""
 
-        
-        self.data[f"{name.name}"] = name
+        self.data[f"{record.name.value}"] = record
 
     def delete(self, name):
         """Метод видаляє запис(рекорд) в адресну книжку *class AddressBook"""
 
-        
         for key_name in self.data.keys():
             if key_name == name:
                 self.data.pop(key_name)
@@ -112,7 +110,6 @@ class AddressBook(UserDict):
 
     def find(self, name):
         """Метод шукає запис(рекорд) за іменем в адресній книжці *class AddressBook"""
-
 
         for key_name in self.data.keys():
             if key_name == name:
