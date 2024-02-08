@@ -33,7 +33,7 @@ class Phone(Field):
     """Клас немає власного конструкора, наслідує поля і методи від *class Field"""
 
     def is_valide(self, value):
-        return len(value) == 10 and int(value)
+        return len(value) == 10 and value.isdigit()
 
     def __eq__(self, other):
         return isinstance(other, Phone) and self.value == other.value
@@ -65,14 +65,14 @@ class Record:
         """
         old_phone = Phone(old_phone)
         new_phone = Phone(new_phone)
-        found = False
+        record = False
 
         for i, _ in enumerate(self.phones):
             if self.phones[i] == old_phone:
                 self.phones[i] = new_phone
                 return self.phones[i]
 
-        if not found:
+        if not record:
             raise ValueError
 
     def find_phone(self, numbre_phone):
@@ -97,21 +97,17 @@ class AddressBook(UserDict):
     def add_record(self, record):
         """Метод додає запис(рекорд) в адресну книжку *class AddressBook"""
 
-        self.data[f"{record.name.value}"] = record
+        self.data[record.name.value] = record
 
     def delete(self, name):
         """Метод видаляє запис(рекорд) в адресну книжку *class AddressBook"""
 
         for key_name in self.data.keys():
-            if key_name == name:
-                self.data.pop(key_name)
-                return self.data
-        return None
-
+            return self.data.pop(key_name, None)
+        
     def find(self, name):
         """Метод шукає запис(рекорд) за іменем в адресній книжці *class AddressBook"""
 
-        for key_name in self.data.keys():
-            if key_name == name:
-                return self.data[name]
-        return None
+                  
+        return self.data.get(name, None)
+        
